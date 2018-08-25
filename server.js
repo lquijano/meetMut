@@ -7,14 +7,22 @@ var app = express();
 var PORT = 8080;
 
 
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+// use res.render to load up an ejs view file
+
 
 // Parse Application
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //Routes testing
-app.get("/", function(req, res) {
-  res.send("<h1>Welcome to the route path</h1>");
+// app.get("/", function(req, res) {
+//   res.send("<h1>Welcome to the route path</h1>");
+// });
+
+app.get('/', function(req, res) {
+	res.render('pages/index');
 });
 
 
