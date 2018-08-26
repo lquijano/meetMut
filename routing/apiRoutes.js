@@ -8,13 +8,3 @@ module.exports = function(app) {
     res.json(animals);
   });
 };
-
-
-// animation
-  // flipper + sounds
-  //  you got mail for the dog reveal
-
-
-
-  // petFinder API
-  // sounds?

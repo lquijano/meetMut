@@ -21,45 +21,18 @@ app.use(cookieParser());
 var app = express();
 var PORT = 8080;
 
-// Parse Application
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+// use res.render to load up an ejs view file
 
 //Routes testing
 // app.get("/", function(req, res) {
 //   res.send("<h1>Welcome to the route path</h1>");
 // });
 
-// // set the view engine to ejs
-// app.set('view engine', 'ejs');
-//
-// // use res.render to load up an ejs view file
-//
-// index page
-// app.get('/', function(req, res) {
-// 	res.render('app/public/pages/index');
-// });
-//
-// // about page
-// app.get('/about', function(req, res) {
-// 	res.render('pages/aboutMeetMutt');
-// });
-//
-//
-// // questionnaire page
-// app.get('/browse', function(req, res) {
-// 	res.render('pages/animalsApi');
-// });
-//
-// app.get('pages/questionnaire', function(req, resp) {
-//   res.render('pages/questionnaire');
-//
-// });
-// The below points our server to a series of "route" files.
-// These routes give our server a "map" of how to respond when users visit or request data from various URLs.
-// tbd if needed - talk to seif
-// require("/../app/routing/apiRoutes")(app);
-// require("/../app/routing/htmlRoutes")(app);
+app.get('/', function(req, res) {
+	res.render('pages/index');
+});
 
 // Listener, starting our server
 app.listen(PORT, function() {
