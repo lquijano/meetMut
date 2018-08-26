@@ -1,20 +1,29 @@
 // Dependencies requirements
-var express = require ("express");
-var bodyParser = require ("body-parser");
+var express = require("express");
+var bodyParser = require("body-parser");
+var router = express.Router();
+var mysql = require("mysql");
+var bcrypt = require("bcryptjs");
+
+//session stuff
+var cookieParser = require("cookie-parser");
+
+var session = require("express-session");
+
+//allow sessions
+app.use(
+  session({ secret: "app", cookie: { maxAge: 1 * 1000 * 60 * 60 * 24 * 365 } })
+);
+
+app.use(cookieParser());
 
 // Express configuration
 var app = express();
 var PORT = 8080;
 
-
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 // use res.render to load up an ejs view file
-
-
-// Parse Application
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
 //Routes testing
 // app.get("/", function(req, res) {
@@ -24,38 +33,6 @@ app.use(bodyParser.json());
 app.get('/', function(req, res) {
 	res.render('pages/index');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// The below points our server to a series of "route" files.
-// These routes give our server a "map" of how to respond when users visit or request data from various URLs.
-// require("/../app/routing/apiRoutes")(app);
-// require("/../app/routing/htmlRoutes")(app);
-
 
 // Listener, starting our server
 app.listen(PORT, function() {
