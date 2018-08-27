@@ -1,6 +1,8 @@
 // Dependencies requirements
 var express = require("express");
 var bodyParser = require("body-parser");
+// Express configuration
+var app = express();
 var router = express.Router();
 var mysql = require("mysql");
 var bcrypt = require("bcryptjs");
@@ -11,14 +13,13 @@ var cookieParser = require("cookie-parser");
 var session = require("express-session");
 
 //allow sessions
-app.use(
-  session({ secret: "app", cookie: { maxAge: 1 * 1000 * 60 * 60 * 24 * 365 } })
-);
+// app.use(
+//   session({ secret: "app", cookie: { maxAge: 1 * 1000 * 60 * 60 * 24 * 365 } })
+// );
+//
+// app.use(cookieParser());
 
-app.use(cookieParser());
 
-// Express configuration
-var app = express();
 var PORT = 8080;
 
 // set the view engine to ejs
@@ -32,6 +33,18 @@ app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
 	res.render('pages/index');
+});
+
+app.get('/questionnaire', function(req, res) {
+	res.render('pages/questionnaire');
+});
+
+app.get('/meet', function(req, res) {
+	res.render('pages/meet');
+});
+
+app.get('/contact', function(req, res) {
+	res.render('pages/contact');
 });
 
 // Listener, starting our server

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include ../partials/head %>
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous">
+  </script>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body class="container">
+
+	<header>
+		<% include ../partials/header %>
+	</header>
+
+	<main>
+		<div class="row">
+			<div class="col-sm-8">
+
+				<div style="background-color:lightblue; opacity:0.8; text-align:center;" class="jumbotron">
+					<h1>Questionnaire</h1>
+					<p>Fill Out Honestly Please :)</p>
+				</div>
+
+			</div>
+
+			<div class="col-sm-4"></div>
+		</div>
+	</main>
+
+<div id="questionsList"></div>
+
+<button type="button" class="btn btn-primary black-background white" id="sub-but">Submit</button>
+
+<div id="results"></div>
+
+	<footer>
+		<% include ../partials/footer %>
+	</footer>
+
+	<script type="text/javascript">
+
+	var questions = [
+	  {
+	    q: "1. Have you ever owned a pet?",
+	    answers: {
+	      a: "Yes",
+	      b: "No"
+	    }
+	  },
+	  {
+	    q: "2. Do you ever skip a meal?",
+	    answers: {
+	      a: "Yes",
+	      b: "No"
+	    }
+	  },
+	  {
+	    q: "3. Does it bother you to have lint on your clothes?",
+	    answers: {
+	      a: "Yes",
+	      b: "No"
+	    }
+	  },
+	  {
+	    q:
+	      "4. On a scale from 1 to 5 (5 being very affectionate) how affectionate are you?",
+	    answers: {
+	      a: "1",
+	      b: "2",
+	      c: "3",
+	      d: "4",
+	      e: "5"
+	    }
+	  },
+	  {
+	    q: "5. Pick your most ideal weekend activity:",
+	    answers: {
+	      a: "Hiking",
+	      b: "Staying home and watching Netflix",
+	      c: "Brunch & mimosas",
+	      d: "Bar hopping"
+	    }
+	  },
+	  {
+	    q: "6. Which one best describes your disposable income each month?",
+	    answers: {
+	      a: "$0-100",
+	      b: "$100-200",
+	      c: "$200-300",
+	      d: "I live in San Francisco"
+	    }
+	  },
+	  {
+	    q:
+	      "7. If you woke up and your pet urinated all over your bed sheets what would you do?",
+	    answers: {
+	      a: "Just clean it and not do anything else ",
+	      b: "Hit your pet",
+	      c: "Verbally tell your pet that it’s not okay and attempt to train it "
+	    }
+	  },
+	  {
+	    q: "8. How many hours a day will the pet be alone at the house?",
+	    answers: {
+	      a: "0-3 hours",
+	      b: "3-6 hours",
+	      c: "6-8 hours",
+	      d: "8+ hours"
+	    }
+	  },
+	  {
+	    q: "9. Does your property have a yard?",
+	    answers: {
+	      a: "Yes",
+	      b: "No"
+	    }
+	  },
+	  {
+	    q: "10. How often do you lose your belongings?",
+	    answers: {
+	      a: "Often",
+	      b: "Sometimes",
+	      c: "Not very often",
+	      d: "Almost never"
+	    }
+	  }
+	];
+
+	var div, question_text, paragraph;
+	for (var index in questions){
+	    question_text = questions[index].q;
+	    var div = $('<div>');
+	    paragraph = $('<p>');
+	    paragraph.text(question_text);
+	    div.append(paragraph);
+			console.log(div);
+	    $('#questionslist').append(div);
+	//loops through the object within the object (answers), then adds the answers to the buttons, then appends it to the ID
+	    for (letter in questions[index].answers){
+	        choices = questions[index].answers[letter];
+	        var createChoices = $('<input type="radio" name="'+ questions[index].name +'" id="'+ choices +'"><label></label>');
+	        createChoices.text(choices);
+	        $('#questionslist').append(createChoices);
+	    }
+	}
+
+// 	var questionDisplay = function() {
+//     $(".questions :not('#sub-but')").empty();
+//     // loops through the 10 questions
+//     for (var j = 0; j < 10; j++) {
+//         $('.questions').prepend('<div class="' + questions[j].name + '"></div>');
+//         $(questions[j].divClass).append('<div class ="ques-title">' + questions[j].question + '</div>');
+//         // loops through answers for each radio button
+//         for (var i = 0; i <= 3; i++) {
+//             $(questions[j].divClass).append('<input type="radio"  name="' + questions[j].name + '" value="' + questions[j].answer[i] + '"/><label for="' + labels[i] + '">' + questions[j].answer[i] + '</label>');
+//         }
+//         $('.questions').prepend('<hr />');
+//     }
+// }
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</body>
+</html>
