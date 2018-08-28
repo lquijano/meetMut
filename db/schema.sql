@@ -1,0 +1,21 @@
+DROP  DATABASE IF EXISTS meetMutt_db;
+
+CREATE DATABASE meetMutt_db;
+
+USE meetMutt_db;
+
+CREATE TABLE animals(
+	id INT NOT NULL AUTO_INCREMENT,
+	animal TEXT NOT NULL,
+	picture TEXT NOT NULL,
+	score INT (2),
+	reasons TEXT NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE users(
+	id INT NOT NULL AUTO_INCREMENT,
+	email VARCHAR(255) NOT NULL UNIQUE,
+	password_hash VARCHAR(255) NOT NULL,
+	PRIMARY KEY (id)
+);

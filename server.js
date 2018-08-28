@@ -35,6 +35,21 @@ app.use(
 // initialize cookie-parser to allow us access the cookies stored in the browser.
 app.use(cookieParser());
 
+// Initializes the connection variable to sync with a MySQL database
+var connection = mysql.createConnection({
+  host: "localhost",
+
+  // Your port; if not 3306
+  port: 3306,
+
+  // Your username
+  user: "root",
+
+  // Your password
+  password: "",
+  database: "another_users_db"
+});
+
 app.get("/", function(req, res) {
   res.render("pages/login");
 });

@@ -1,1 +1,0 @@
--- INSERT INTO registation_db(email, password_hash)
