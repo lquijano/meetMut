@@ -1,5 +1,6 @@
 // Dependencies requirements
 var express = require("express");
+var app = express();
 var bodyParser = require("body-parser");
 var mysql = require("mysql");
 var bcrypt = require("bcryptjs");
@@ -8,16 +9,9 @@ var bcrypt = require("bcryptjs");
 var cookieParser = require("cookie-parser");
 var session = require("express-session");
 
-var app = express();
 var router = express.Router();
 
 app.use(express.static("public"));
-//allow sessions
-// app.use(
-//   session({ secret: "app", cookie: { maxAge: 1 * 1000 * 60 * 60 * 24 * 365 } })
-// );
-//
-// app.use(cookieParser());
 
 var PORT = 8080;
 
@@ -33,15 +27,15 @@ app.set("view engine", "ejs");
 // initialize body-parser to parse incoming parameters requests to req.body
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// initialize cookie-parser to allow us access the cookies stored in the browser.
-app.use(cookieParser());
-
 // initialize express-session to allow us track the logged-in user across sessions.
 app.use(
   session({ secret: "app", cookie: { maxAge: 1 * 1000 * 60 * 60 * 24 * 365 } })
 );
 
-app.get("/login/:email/:password", function(req, res) {
+// initialize cookie-parser to allow us access the cookies stored in the browser.
+app.use(cookieParser());
+
+app.get("/", function(req, res) {
   res.render("pages/login");
 });
 
