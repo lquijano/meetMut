@@ -6,12 +6,11 @@ var app = express();
 var router = express.Router();
 var mysql = require("mysql");
 var bcrypt = require("bcryptjs");
-
 //session stuff
 var cookieParser = require("cookie-parser");
 
 var session = require("express-session");
-
+app.use(express.static("public"));
 //allow sessions
 // app.use(
 //   session({ secret: "app", cookie: { maxAge: 1 * 1000 * 60 * 60 * 24 * 365 } })
