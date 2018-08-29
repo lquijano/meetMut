@@ -1,50 +1,53 @@
 var questions = [
   {
-    q: "1. Have you ever owned a pet?",
+    q: "1. Which of these pets have you owned before?",
     answers: {
-      a: "Yes",
-      b: "No"
+      a: "Cat",
+      b: "Dog",
+      c: "Gold Fish",
+      d: "None of the above"
     },
     name: "owned",
   },
   {
-    q: "2. Do you ever skip a meal?",
+    q: "2. How often do you skip a meal?",
     answers: {
-      a: "Yes",
-      b: "No"
+      a: "Once a week",
+      b: "Twice a week",
+      c: "Three times a week",
+      d: "Four or more times a week"
     },
     name: "skip"
   },
   {
-    q: "3. Does it bother you to have lint on your clothes?",
+    q: "3. What is your noise tolerance for barking? (4 being most tolerant)",
     answers: {
-      a: "Yes",
-      b: "No"
+      a: "1",
+      b: "2",
+      c: "3",
+      d: "4"
     },
     name: "lint"
   },
   {
     q:
-      "4. On a scale from 1 to 5 (5 being very affectionate) how affectionate are you?",
+      "4. On a scale from 1 to 4 (4 being very affectionate) how affectionate are you?",
     answers: {
       a: "1",
       b: "2",
       c: "3",
-      d: "4",
-      e: "5"
+      d: "4"
     },
     name: "affectionate"
   },
   {
     q: "5. Pick your most ideal weekend activity:",
-    answers:["Hiking", "Hiking","Hiking","Hiking"],
-    answersValues: [3,],
-    // answers: {
-    //   a: "Hiking",
-    //   b: "Staying home and watching Netflix",
-    //   c: "Brunch & mimosas",
-    //   d: "Bar hopping"
-    // },
+    answers: {
+      a: "Hiking",
+      b: "Staying home and watching Netflix",
+      c: "Brunch & mimosas",
+      d: "Bar hopping"
+    },
     name: "weekend"
   },
   {
@@ -63,7 +66,8 @@ var questions = [
     answers: {
       a: "Just clean it and not do anything else",
       b: "Hit your pet",
-      c: "Verbally tell your pet that it’s not okay and attempt to train it"
+      c: "Verbally tell your pet that it’s not okay and attempt to train it",
+      d: "Give your pet up for adoption"
     },
     name: "urinate"
   },
@@ -78,10 +82,12 @@ var questions = [
     name: "alone"
   },
   {
-    q: "9. Does your property have a yard?",
+    q: "9. Which of these does your property have?",
     answers: {
-      a: "Yes",
-      b: "No"
+      a: "Front yard only",
+      b: "Backyard only",
+      c: "Front yard and backyard",
+      d: "None"
     },
     name: "yard"
   },
@@ -133,4 +139,4 @@ for (var index in questions){
 
 
 //give each answer a value and store the answers in a variable. At the end of the quiz have all the values added up.
-//create a function 
+//create a function
