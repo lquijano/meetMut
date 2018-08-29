@@ -5,6 +5,16 @@ var animals = require("../data/animals.js");
 //ROUTING
 module.exports = function(app) {
   app.get("/api/animals", function(req, res){
-    res.json(animals);
+    //pull the user score off the req.body / save to variable
+    var newPet={
+      link:"",
+      petname:""
+    }
+
+    //  query * from the pet table
+    // then compare user score to database min/max in an if or switch statement
+    // when the right fit is found, assign values from db to the newPet object
+    res.json(newPet)
+  
   });
 };

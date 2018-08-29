@@ -1,4 +1,4 @@
-INSERT INTO animals (animal, picture, score, reasons) VALUES ('Goldfish', 'http://elizabeth.podgorny.us/wp-content/uploads/2015/05/goldfish.png', 0, 'Start small!  Maybe even start with a plant... Like a cactus.  You should probably work on yourself before you take care of something else.  You are flat out irresponsible!');
+INSERT INTO animals (animal, picture, min, max, reasons) VALUES ('Goldfish', 'http://elizabeth.podgorny.us/wp-content/uploads/2015/05/goldfish.png', 0, 'Start small!  Maybe even start with a plant... Like a cactus.  You should probably work on yourself before you take care of something else.  You are flat out irresponsible!');
 
 INSERT INTO animals (animal, picture, score, reasons) VALUES ("Kitty Cat", "http://4.bp.blogspot.com/_BhTZERbxx54/TAC1mCB53BI/AAAAAAAAACs/cLcnffFYgws/s1600/funny+cat+wallpaper.jpg", 0, "Miss Independent.  You're fairly responsible, keep working on it until then here's a cat!");
 
