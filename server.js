@@ -4,12 +4,8 @@ var app = express();
 var bodyParser = require("body-parser");
 var mysql = require("mysql");
 var bcrypt = require("bcryptjs");
-// Express configuration
-//initializing sessions
-var cookieParser = require("cookie-parser");
-var session = require("express-session");
-
 var router = express.Router();
+var path = require("path");
 
 app.use(express.static("public"));
 
@@ -27,27 +23,29 @@ app.set("view engine", "ejs");
 // initialize body-parser to parse incoming parameters requests to req.body
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// initialize express-session to allow us track the logged-in user across sessions.
-app.use(
-  session({ secret: "app", cookie: { maxAge: 1 * 1000 * 60 * 60 * 24 * 365 } })
-);
-
-// initialize cookie-parser to allow us access the cookies stored in the browser.
-app.use(cookieParser());
-
 // Initializes the connection variable to sync with a MySQL database
 var connection = mysql.createConnection({
   host: "localhost",
 
   // Your port; if not 3306
-  port: 3306,
+  port: 8080,
 
   // Your username
   user: "root",
 
   // Your password
   password: "",
-  database: "another_users_db"
+  database: "meetMutt_db"
+});
+
+app.post("/sigin", function(req, res) {
+  connection.query(
+    "INSERT INTO users (username, password_hash) VALUES(?, ?)",
+    [req.body.username, req.body.password_hash],
+    function(err, response) {
+      res.redirect("/contact");
+    }
+  );
 });
 
 app.get("/", function(req, res) {
@@ -56,6 +54,10 @@ app.get("/", function(req, res) {
 
 app.get("/questionnaire", function(req, res) {
   res.render("pages/questionnaire");
+});
+
+app.get("/results", function(req, res) {
+  res.render("pages/results");
 });
 
 app.get("/meet", function(req, res) {
