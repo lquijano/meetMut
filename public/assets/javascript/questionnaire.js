@@ -107,22 +107,20 @@ $(document).ready(function(){
   var div, question_text, paragraph;
 for (var index in questions){
     question_text = questions[index].q;
-    div = $(`<div id="quest${index}">`);
+    div = $('<div>');
     paragraph = $('<p>');
     paragraph.text(question_text);
     div.append(paragraph);
     console.log(div);
     $('#questionsList').append(paragraph);
-    $('#questionsList').append(div);
 
 // loops through the object within the object (answers), then adds the answers to the buttons, then appends it to the ID
     for (letter in questions[index].answers){
         var choices = questions[index].answers[letter];
-        var createChoices = $('<input class= "button" type="radio" value="' + index + '" name="'+ questions[index].name + '" id="'+ choices +'">');
-        // var createChoices = $(`<input class= "button" type="radio" name="${questions[index].name}" id="${choices}">`);
+        var createChoices = $('<input class= "button" type="radio" name="'+ questions[index].name + '" id="'+ choices +'"><label></label>');
 
         createChoices.text(choices);
-        $(`#quest${index}`).append(createChoices);
+        $('#questionsList').append(createChoices);
     }
     // var counter = 1;
     // for (var key =0; key<answers.length; key++) {
@@ -130,13 +128,6 @@ for (var index in questions){
     // }
 }
 });
-
-
-/// once they click submit || finish all questions, iterate over radio button and assign values to vars, add them up (make sure they are numbers not strings) and make a post request to the api endpoint making sure to include score that you want to check in an object
-
-//once data come back use jQuery and the data object to poprulate screen/modal
-
-
 
 //give each answer a value and store the answers in a variable. At the end of the quiz have all the values added up.
 //create a function
