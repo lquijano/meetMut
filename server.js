@@ -1,8 +1,15 @@
 // Dependencies requirements
 var express = require("express");
 var app = express();
-var bodyParser = require("body-parser");
 var mysql = require("mysql");
+var passport = require("passport");
+var flash = require("connect-flash");
+
+var morgan = require("morgan");
+var cookieParser = require("cookie-parser");
+var bodyParser = require("body-parser");
+var session = require("express-session");
+
 var bcrypt = require("bcryptjs");
 var router = express.Router();
 var path = require("path");
@@ -11,7 +18,12 @@ app.use(express.static("public"));
 
 var PORT = 8080;
 
-// set the view engine to ejs
+// set up our express application
+app.use(morgan("dev")); // log every request to the console
+app.use(cookieParser()); // read cookies (needed for auth)
+app.use(bodyParser.urlencoded({ extended: true })); // get information from html forms
+
+// set up for ejs templating
 app.set("view engine", "ejs");
 // use res.render to load up an ejs view file
 
@@ -20,14 +32,19 @@ app.set("view engine", "ejs");
 //   res.send("<h1>Welcome to the route path</h1>");
 // });
 
-// initialize body-parser to parse incoming parameters requests to req.body
-app.use(bodyParser.urlencoded({ extended: true }));
+// required for passport
+app.use(session({ secret: "ilovecoding" })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+// routes ======================================================================
+require("./routing/htmlRoutes.js")(app, passport); // load our routes and pass in our app and fully configured passport
 
 // Initializes the connection variable to sync with a MySQL database
 var connection = mysql.createConnection({
   host: "localhost",
 
-  // Your port; if not 3306
   port: 8080,
 
   // Your username
@@ -36,36 +53,6 @@ var connection = mysql.createConnection({
   // Your password
   password: "",
   database: "meetMutt_db"
-});
-
-app.post("/sigin", function(req, res) {
-  connection.query(
-    "INSERT INTO users (username, password_hash) VALUES(?, ?)",
-    [req.body.username, req.body.password_hash],
-    function(err, response) {
-      res.redirect("/contact");
-    }
-  );
-});
-
-app.get("/", function(req, res) {
-  res.render("pages/login");
-});
-
-app.get("/questionnaire", function(req, res) {
-  res.render("pages/questionnaire");
-});
-
-app.get("/results", function(req, res) {
-  res.render("pages/results");
-});
-
-app.get("/meet", function(req, res) {
-  res.render("pages/meet");
-});
-
-app.get("/contact", function(req, res) {
-  res.render("pages/contact");
 });
 
 // Listener, starting our server
