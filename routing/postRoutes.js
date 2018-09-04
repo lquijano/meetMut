@@ -3,8 +3,8 @@ var path = require("path");
 module.exports = function(app) {
   app.post("/sigin", function(req, res) {
     connection.query(
-      "INSERT INTO users (username, password_hash) VALUES(?, ?)",
-      [req.body.username, req.body.password_hash],
+      "INSERT INTO users (username, password) VALUES(?, ?)",
+      [req.body.username, req.body.password],
       function(err, response) {
         res.redirect("/contact");
       }
