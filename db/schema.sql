@@ -8,7 +8,8 @@ CREATE TABLE animals(
 	id INT NOT NULL AUTO_INCREMENT,
 	animal TEXT NOT NULL,
 	picture TEXT NOT NULL,
-	score INT (2),
+	min INT NOT NULL,
+	max INT NOT NULL,
 	reasons TEXT NOT NULL,
 	PRIMARY KEY (id)
 );

@@ -74,7 +74,7 @@ var questions = [
   {
     q: "8. How many hours a day will the pet be alone at the house?",
     answers: {
-      a: "0-3 hours",
+      a: { text: "0-3 hours", score: 3},
       b: "3-6 hours",
       c: "6-8 hours",
       d: "8+ hours"
@@ -101,11 +101,11 @@ var questions = [
     },
     name: "belongings"
   }
-];
-
-$(document).ready(function(){
+ ];
+ 
+ $(document).ready(function(){
   var div, question_text, paragraph;
-for (var index in questions){
+ for (var index in questions){
     question_text = questions[index].q;
     div = $('<div>');
     paragraph = $('<p>');
@@ -113,12 +113,12 @@ for (var index in questions){
     div.append(paragraph);
     console.log(div);
     $('#questionsList').append(paragraph);
-
-// loops through the object within the object (answers), then adds the answers to the buttons, then appends it to the ID
+ 
+ // loops through the object within the object (answers), then adds the answers to the buttons, then appends it to the ID
     for (letter in questions[index].answers){
         var choices = questions[index].answers[letter];
         var createChoices = $('<input class= "button" type="radio" name="'+ questions[index].name + '" id="'+ choices +'"><label></label>');
-
+ 
         createChoices.text(choices);
         $('#questionsList').append(createChoices);
     }
@@ -126,8 +126,9 @@ for (var index in questions){
     // for (var key =0; key<answers.length; key++) {
     //   counter++;
     // }
-}
-});
-
-//give each answer a value and store the answers in a variable. At the end of the quiz have all the values added up.
-//create a function
+ }
+ });
+ 
+ //give each answer a value and store the answers in a variable. At the end of the quiz have all the values added up.
+ //create a function
+ 
