@@ -41,6 +41,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 // routes ======================================================================
 require("./routing/htmlRoutes.js")(app, passport); // load our routes and pass in our app and fully configured passport
 
+require("./routing/apiRoutes.js")(app);
 // Initializes the connection variable to sync with a MySQL database
 var connection = mysql.createConnection({
   host: "localhost",
@@ -51,7 +52,7 @@ var connection = mysql.createConnection({
   user: "root",
 
   // Your password
-  password: "",
+  password: "passwod",
   database: "meetMutt_db"
 });
 

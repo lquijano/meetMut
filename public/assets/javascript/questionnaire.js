@@ -117,11 +117,12 @@ for (var index in questions){
     div.append(paragraph);
     console.log(div);
     $('#questionsList').append(paragraph);
+    //create a new div inside this portion of the for loop where we can put the questions/answers to include a class to it to stylize it.  #answerList on #questionsList 
 
 // loops through the object within the object (answers), then adds the answers to the buttons, then appends it to the ID
     for (letter in questions[index].answers){
         var choices = questions[index].answers[letter].text;
-        var createChoices = $('<input class="button" type="radio" name="'+ questions[index].name + '" id="'+ choices +'"' + 'data-score="' + questions[index].answers[letter].score +'" ><label>'+ choices +'</label>');
+        var createChoices = $(`<input class="button" type="radio" name="${questions[index].name}" id="${choices} data-score="${questions[index].answers[letter].score}">`);  
         // <input class="button" type="radio" name="affectionate" id="3" data-score="9">
 
         createChoices.text(choices);
@@ -138,11 +139,27 @@ for (var index in questions){
 //   });
 
 
-$(document).on("click", ".button", function(event) {
+$(document).on("click", "#sub-but", function(event) {
   console.log('test');
   event.preventDefault();
   var score = $( this ).data("score");
   scoreArr.push(score);
+  // $.each($("input[name='question-2']:checked"), function() {
+  //   if ($(this).val() === questions[2].correctAnswer) {
+  //     game.correct++;
+  //   }
+  //   else {
+  //     game.incorrect++;
+  //   }
+  // });
+var userScore = {
+  score:20
+};
+  //do this for each questions and it'll give us our total.  obj = userScore.  The property will be 'score' total.  Once we have the 'score' do a post requestion $.post route, obj, function data - 
+$.post("/api/animals", userScore, function(res){
+  console.log(res);
+});
+  //
   console.log(score);
 });
 
