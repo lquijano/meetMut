@@ -15,7 +15,6 @@ module.exports = function (app) {
     res.render("pages/registration");
   });
 
-
   app.get('/profile', isLoggedIn, function (req, res) {
     res.render('profile.ejs', {
       user: req.user
@@ -39,15 +38,17 @@ module.exports = function (app) {
   });
 
   // LOGOUT
-  app.get('/logout', function (req, res) {
+
+  app.get("/logout", function(req, res) {
     req.logout();
-    res.redirect('/');
+    res.redirect("/");
   });
+
 
   // route middleware to make sure a user is logged in
   function isLoggedIn(req, res, next) {
-
     // if user is authenticated in the session, carry on
+
     if (req.isAuthenticated()) {
       return next()
     };
