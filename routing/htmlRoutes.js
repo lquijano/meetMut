@@ -25,6 +25,10 @@ module.exports = function (app) {
     res.render("pages/questionnaire");
   });
 
+  app.get("/survey", function (req, res) {
+    res.render("pages/survey");
+  });
+
   app.get("/results", function (req, res) {
     res.render("pages/results");
   });
