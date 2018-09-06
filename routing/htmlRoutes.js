@@ -5,7 +5,7 @@ module.exports = function(app) {
     res.render("pages/index");
   });
 
-// show the login form
+  // show the login form
 
   app.get("/login", function(req, res) {
     res.render("pages/login");
@@ -15,11 +15,11 @@ module.exports = function(app) {
     res.render("pages/registration");
   });
 
-
-  app.get('/profile', isLoggedIn, function(req, res) {
-          res.render('profile.ejs', {
-              user : req.user});
-      });
+  app.get("/profile", isLoggedIn, function(req, res) {
+    res.render("profile.ejs", {
+      user: req.user
+    });
+  });
 
   app.get("/questionnaire", function(req, res) {
     res.render("pages/questionnaire");
@@ -37,18 +37,18 @@ module.exports = function(app) {
     res.render("pages/contact");
   });
 
-  LOGOUT
-  app.get('/logout', function(req, res) {
-      req.logout();
-      res.redirect('/');
-});
+  // LOGOUT
+  app.get("/logout", function(req, res) {
+    req.logout();
+    res.redirect("/");
+  });
 
-// route middleware to make sure a user is logged in
-function isLoggedIn(req, res, next) {
-
+  // route middleware to make sure a user is logged in
+  function isLoggedIn(req, res, next) {
     // if user is authenticated in the session, carry on
-    if (req.isAuthenticated())
-        return next();
+    if (req.isAuthenticated()) return next();
 
     // if they aren't redirect them to the home page
-    res.redirect('/');
+    res.redirect("/");
+  }
+};

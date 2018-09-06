@@ -1,16 +1,16 @@
 // Dependencies requirements
 var express = require("express");
 var app = express();
-var mysql = require("mysql");
+
 var passport = require("passport");
 var flash = require("connect-flash");
+var mysql = require("mysql");
 
 var morgan = require("morgan");
 var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
 var session = require("express-session");
 
-var bcrypt = require("bcryptjs");
 var router = express.Router();
 var path = require("path");
 
@@ -53,6 +53,14 @@ var connection = mysql.createConnection({
   // Your password
   password: "",
   database: "meetMutt_db"
+});
+
+connection.connect(function(error) {
+  if (!!error) {
+    console.log("Error");
+  } else {
+    console.log("connected");
+  }
 });
 
 // Listener, starting our server

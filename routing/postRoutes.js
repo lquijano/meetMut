@@ -10,4 +10,14 @@ module.exports = function(app) {
       }
     );
   });
+
+  // process the signup form
+  app.post(
+    "/signin",
+    passport.authenticate("local-login", {
+      successRedirect: "/questionnaire", // redirect to the secure profile section
+      failureRedirect: "/login", // redirect back to the signup page if there is an error
+      failureFlash: true // allow flash messages
+    })
+  );
 };
