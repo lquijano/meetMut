@@ -76,7 +76,13 @@ module.exports = function(app, passport) {
     res.render("pages/questionnaire");
   });
 
-  app.get("/results", function(req, res) {
+
+  app.get("/survey", function (req, res) {
+    res.render("pages/survey");
+  });
+
+  app.get("/results", function (req, res) {
+
     res.render("pages/results");
   });
 
