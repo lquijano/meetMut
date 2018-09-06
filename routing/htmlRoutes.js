@@ -26,6 +26,11 @@ module.exports = function (app) {
     res.render("pages/questionnaire");
   });
 
+  //route to the cards version survey
+  app.get("/survey", function (req, res) {
+    res.render("pages/survey_cards");
+  });
+
   app.get("/results", function (req, res) {
     res.render("pages/results");
   });
