@@ -1,9 +1,3 @@
-var scoreArr = [5, 4];
-var userScore = {
-  totalScore: []
-};
-// var answerVal = ["Cat", "Dog", "Gold Fish"];
-
 var questions = [
   {
     q: "1. Which of these pets have you owned before?",
@@ -109,50 +103,54 @@ var questions = [
   }
 ];
 
-//questionsList div - main div
-
-//div with questions only
-//div with answers that will have a class that when clicked will make a border
-
-//a "next" or "submit" button
+var scoreArr = [];
+var userScore = {
+  totalScore: []
+};
+var q_div, q_text, q_append, a_div, a_text, a_shown, thisScore, submit_button, container, counter, q_index;
+submit_button = document.getElementById("sub-but");
+container = document.getElementById("card");
+counter = -1;
+q_index = -1;
 
 $(document).ready(function () {
-  var q_div, q_text, q_append, a_div, a_text, a_shown, thisScore;
-
   for (var key in questions) {
+    q_index++
     q_text = questions[key].q;
-    q_div = $('<div>');
+    q_div = $('<div>').addClass('class' + q_index).attr("id", "id"+q_index).hide();
     q_div.text(q_text);
     q_append = $('#questionsList').append(q_div);
-    $('#card').append(q_append);
 
-    //create a new div inside this portion of the for loop where we can put the questions/answers to include a class to it to stylize it.  #answerList on #questionsList 
-
-    // loops through the object within the object (answers), then adds the answers to the answerList div
+    // loops through the object within the object (answers), then adds the answers to the answerList div within the questionsList div
+// debugger;
     for (var options in questions[key].answers) {
       a_text = questions[key].answers[options].a_option;
-      a_div = $(`<div class="answers" name="${questions[key].name}" id="${a_text}" data-score="${questions[key].answers[options].score}">`);
+      a_div = $(`<div class="answers" name="${questions[key].name}" id="${a_text}" data-score="${questions[key].answers[options].score}">`).addClass('class' + q_index).hide();
       a_div.text(a_text);
       a_shown = $("#answersList").append(a_div);
-      $('#card').append(a_shown);
+      // debugger;
+          };
 
-      //answers will glow when hovered over
-      $(".answers").hover(function () {
-        $(this).toggleClass("red");
-
+        };
+        // click event here to trigger the next question
+        $("#sub-but").on("click", function () {
+          counter++;
+          if ($("div").hasClass("class" + q_index))  {
+            $("div").show()
+            alert($("div"));
+          };
+          
       });
-      //click event here to pick an answer
-      $(".answers").on("click", function () {
-        $(this).addClass("selected");
-      });
-
-      //click event here to trigger the next question
-      $("#sub-but").on("click", function () {
-
       });
 
-    };
-  };
+//click event here to pick an answer
+$(".answers").on("click", function () {
+  $(this).toggleClass("highlight");
+});
+
+// //answers will highlight when hovered over
+$(".answers").hover(function () {
+  $(this).toggleClass("hover");
 });
 
 
@@ -163,28 +161,27 @@ $(document).ready(function () {
 //   });
 
 
-$(document).on("click", "#sub-but", function (event) {
-  console.log('test');
-  event.preventDefault();
-  var score = $(this).data("score");
-  userScore.totalScore.push(score);
-  // $.each($("input[name='question-2']:checked"), function() {
-  //   if ($(this).val() === questions[2].correctAnswer) {
-  //     game.correct++;
-  //   }
-  //   else {
-  //     game.incorrect++;
-  //   }
-  // });
+// $(document).on("click", "#sub-but", function (event) {
+//   console.log('test');
+//   var score = $(this).data("score");
+//   userScore.totalScore.push(score);
+// $.each($("input[name='question-2']:checked"), function() {
+//   if ($(this).val() === questions[2].correctAnswer) {
+//     game.correct++;
+//   }
+//   else {
+//     game.incorrect++;
+//   }
+// });
+// });
 
-  //do this for each questions and it'll give us our total.  obj = userScore.  The property will be 'score' total.  Once we have the 'score' do a post requestion $.post route, obj, function data - 
-  $.post("/api/animals", userScore, function (res) {
-    console.log(res);
-    console.log(userScore.totalScore);
+//do this for each questions and it'll give us our total.  obj = userScore.  The property will be 'score' total.  Once we have the 'score' do a post requestion $.post route, obj, function data - 
+// $.post("/api/animals", userScore, function (res) {
+//   console.log(res);
+//   console.log(userScore.totalScore);
 
-  });
-});
-
+// });
+// });
 
 
 //capture the values of each click event. Push those answers into an array. Make a get request to a url where I'll a res.json of that array.

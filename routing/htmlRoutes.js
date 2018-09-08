@@ -53,14 +53,16 @@ module.exports = function(app, passport) {
     res.render("pages/questionnaire");
   });
 
-  //route to the cards version survey
-  app.get("/surveycards", function (req, res) {
-    res.render("pages/survey_cards");
-    
   app.get("/survey", function (req, res) {
     res.render("pages/survey");
 
   });
+  
+  //route to the cards version survey
+  app.get("/surveycards", function (req, res) {
+    res.render("pages/survey_cards");
+  });
+    
 
   app.get("/results", function (req, res) {
 
@@ -76,7 +78,7 @@ module.exports = function(app, passport) {
   });
   //
   //   // LOGOUT
-  });
+  // });
 
   // route middleware to make sure a user is logged in
   function isLoggedIn(req, res, next) {

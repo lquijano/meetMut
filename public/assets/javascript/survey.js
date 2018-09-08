@@ -1,10 +1,7 @@
-alert("hi");
-const scoreArr = [];
+var scoreArr = [];
 var totalScore = 0;
 // Activate submit button
-$('#submitButton').on('click', function (event) {
-    debugger;
-    event.preventDefault();
+$('#submitButton').on('click', function () {
     var q1 = $('#question1').val();
     var q2 = $('#question2').val();
     var q3 = $('#question3').val();
@@ -27,11 +24,17 @@ $('#submitButton').on('click', function (event) {
     scoreArr.push(q9);
     scoreArr.push(q10);
 
-    for (var i = 0; i < scoreArr.length; i++) {
+    function sum(input) {
+        for (var i = 0; i < input.length; i++) {
+            if (isNaN(input[i])) {
+                continue;
+            };
+            totalScore += Number(input[i]);
+        };
+        return totalScore;
 
-        totalScore += parseInt(scoreArr[i]);
-        alert(totalScore);
-        console.log(totalScore);
-
+        // totalScore = (scoreArr[i]);
+        // console.log(totalScore);
     }
+    console.log(sum(scoreArr));
 });

@@ -3,9 +3,10 @@
 
 <head>
     <% include ../partials/head %>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-        <script src="/assets/javascript/questionnaire.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <script src="/assets/javascript/questionnaire.js"></script>
 
 </head>
 
@@ -31,19 +32,27 @@
     </main>
     <div id="card">
         <div id="questionsList"></div>
-
-
         <div id="answersList"></div>
     </div>
-    <button type="button" class="btn btn-primary black-background white" id="sub-but">Continue</button>
+
+    <div id="submit-button">
+        <button type="button" class="btn btn-primary black-background white" id="sub-but">Continue</button>
+    </div>
+    ------------------------------
+    <input type="submit" formmethod="post" value="Submit using POST">
+    ------------------------------
 
     <div id="results"></div>
 
     <!-- <footer> -->
     <% include ../partials/footer %>
-        </footer>
+    </footer>
 
-        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous">
+
+
+
         </script>
 
 </body>
