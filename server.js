@@ -21,7 +21,7 @@ var PORT = 3000;
 // set up our express application
 app.use(morgan("dev")); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
-app.use(bodyParser.urlencoded({ extended: false })); // get information from html forms
+app.use(bodyParser.urlencoded({ extended: true })); // get information from html forms
 
 // set up for ejs templating
 app.set("view engine", "ejs");
@@ -39,10 +39,10 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 // Initializes the connection variable to sync with a MySQL database
-
 // module.exports = connection;
 
 // routes ======================================================================
+require("./routing/apiRoutes.js")(app, passport);
 require("./routing/htmlRoutes.js")(app, passport); // load our routes and pass in our app and fully configured passport
 
 // Listener, starting our server

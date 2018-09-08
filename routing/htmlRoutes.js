@@ -13,10 +13,10 @@ module.exports = function(app, passport) {
   app.get("/login", function(req, res) {
     res.render("pages/login");
   });
-
-  app.get("/home", function(req, res) {
-    res.render("pages/index");
-  });
+  //
+  // app.get("/home", function(req, res) {
+  //   res.render("pages/index");
+  // });
 
   app.get("/registration", function(req, res) {
     res.render("pages/registration");
@@ -26,22 +26,8 @@ module.exports = function(app, passport) {
     res.sendfile("pages/registration");
   });
 
-  // app.post("/myaction", function(req, res, next) {
-  //   // res.json(req.body);
-  //   connection.query(
-  //     "INSERT INTO users (fullname, username, email, password) VALUES(?, ?)",
-  //     [req.body],
-  //     function(err, response) {
-  //       res.redirect("/contact");
-  //     }
-  //   );
-  // });
-
-  app.post("/myaction", function(req, res) {
-    console.log(req.body);
-
-    // console.log(connection);
-
+  app.post("/myaction", function(req, res, next) {
+    // res.json(req.body);
     connection.query(
       "INSERT INTO users (fullname, username, email, password) VALUES (?, ?, ?, ?)",
       [req.body.fullname, req.body.username, req.body.email, req.body.password],
@@ -52,15 +38,6 @@ module.exports = function(app, passport) {
       }
     );
   });
-
-  // CREATE TABLE users(
-  // 	id INT NOT NULL AUTO_INCREMENT,
-  // 	fullname VARCHAR (45) NOT NULL,
-  // 	username VARCHAR (45) NOT NULL UNIQUE,
-  // 	email VARCHAR (45) NOT NULL UNIQUE,
-  // 	password VARCHAR (45) NOT NULL,
-  // 	PRIMARY KEY (id)
-  // );
 
   app.get("/resetPassword", function(req, res) {
     res.render("pages/resetPassword");
@@ -85,15 +62,11 @@ module.exports = function(app, passport) {
   });
 
   app.get("/contact", function(req, res) {
-    res.render("pages/contact");
+    return res.render("pages/contact");
   });
-
-  // LOGOUT
-
-  app.get("/logout", function(req, res) {
-    req.logout();
-    res.redirect("/");
-  });
+  //
+  //   // LOGOUT
+  // });
 
   // route middleware to make sure a user is logged in
   function isLoggedIn(req, res, next) {
