@@ -5,6 +5,12 @@
     <title>MeetMutt Sign-in</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/login.css">
+
+		<script
+	src="https://code.jquery.com/jquery-3.3.1.js"
+	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+	crossorigin="anonymous"></script>
+
 </head>
 <body>
 
@@ -33,6 +39,24 @@
 					</div>
 
       </form>
+
+			<script>
+$("#loginSubmitButton").on("click", function() {
+	event.preventDefault();
+	var newuser = {
+		username: $("#username").val(),
+		password: $("#password").val()
+	};
+
+// based on the data where to redirect
+// this should be happening server side
+//
+
+	$.get("/api/users/login/" + newuser.username, function(data) {
+		location.href="/contact";
+	});
+});
+</script>
 
 </body>
 		<footer>

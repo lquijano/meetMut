@@ -2,7 +2,7 @@ var mysql = require("mysql");
 var connection = mysql.createConnection({
   host: "localhost",
 
-  port: 8080,
+  port: 3306,
 
   // Your username
   user: "root",
@@ -14,7 +14,7 @@ var connection = mysql.createConnection({
 
 connection.connect(function(error) {
   if (!!error) {
-    console.log("Error");
+    console.log(error);
   } else {
     console.log("connected");
   }
