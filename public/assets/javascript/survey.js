@@ -1,7 +1,8 @@
 var scoreArr = [];
 var totalScore = 0;
 // Activate submit button
-$('#submitButton').on('click', function () {
+$('#submitButton').on('click', function (event) {
+    event.preventDefault();
     var q1 = $('#question1').val();
     var q2 = $('#question2').val();
     var q3 = $('#question3').val();
