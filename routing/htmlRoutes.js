@@ -58,7 +58,7 @@ module.exports = function(app, passport) {
   //   res.render("pages/survey_cards");
 
   app.get("/quiz", function(req, res) {
-    res.render("pages/survey");
+    res.render("pages/quiz");
   });
 
   app.get("/results", function(req, res) {
