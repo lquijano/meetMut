@@ -58,6 +58,7 @@
   								<option value="3">Once a week</option>
   								<option value="2">Twice a week</option>
   								<option value="1">Three times a week</option>
+                  <option value="0">Four or more times a week</option>
   							</select>
   						</div>
 
@@ -150,10 +151,10 @@
   							<h5>How often do you lose your belongings?</h5>
   							<select id="question10">
   								<option value="" disabled selected>Choose your option</option>
-  								<option value="1">Often</option>
-  								<option value="2">Sometimes</option>
-  								<option value="3">Not very often</option>
-  								<option value="4">Almost never</option>
+  								<option value="0">Often</option>
+  								<option value="1">Sometimes</option>
+  								<option value="2">Not very often</option>
+  								<option value="3">Almost never</option>
   							</select>
   						</div>
 
@@ -170,7 +171,7 @@
   	<script type="text/javascript">
 
     // var userScore;
-      var scoreArr = [];
+      const scoreArr = [];
       var totalScore = 0;
   		// Activate submit button
   		$('#submitButton').on('click', function(event) {
@@ -197,10 +198,11 @@
         scoreArr.push(q9);
         scoreArr.push(q10);
 
-        for (var i = 0; i< scoreArr.length; i++){
-          totalScore += i;
-        }
+        for(var i = 0; i < scoreArr.length; i++){
 
+          totalScore += parseInt(scoreArr[i]);
+
+        }
 
   		});
 
