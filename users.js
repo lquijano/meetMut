@@ -11,7 +11,7 @@ var userSchema = MySQL.schema({
     username: String,
     email: String,
     password: String
-  }
+  // },
   // facebook: {
   //   id: String,
   //   token: String,

@@ -76,7 +76,7 @@ module.exports = function(app, passport) {
   });
   //
   //   // LOGOUT
-  });
+  // });
 
   // route middleware to make sure a user is logged in
   function isLoggedIn(req, res, next) {
