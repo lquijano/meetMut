@@ -5,7 +5,7 @@ var express = require("express");
 var router = express.router;
 module.exports = function(app, passport) {
   app.get("/", function(req, res) {
-    res.render("pages/index");
+    res.render("pages/registration");
   });
 
   // show the login form
@@ -34,7 +34,7 @@ module.exports = function(app, passport) {
       function(err, response) {
         if (err) console.log(err);
         console.log("test");
-        res.redirect("/contact");
+        res.redirect("/quiz");
       }
     );
   });
@@ -54,16 +54,14 @@ module.exports = function(app, passport) {
   });
 
   //route to the cards version survey
-  app.get("/surveycards", function (req, res) {
-    res.render("pages/survey_cards");
-    
-  app.get("/survey", function (req, res) {
-    res.render("pages/survey");
+  // app.get("/surveycards", function(req, res) {
+  //   res.render("pages/survey_cards");
 
+  app.get("/quiz", function(req, res) {
+    res.render("pages/survey");
   });
 
-  app.get("/results", function (req, res) {
-
+  app.get("/results", function(req, res) {
     res.render("pages/results");
   });
 
