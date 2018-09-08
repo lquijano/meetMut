@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<% include ../partials/head %>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<script
-	  src="https://code.jquery.com/jquery-3.3.1.js"
-	  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-	  crossorigin="anonymous"></script>
+
 </head>
 
 <style media="screen">
-  #submitButton{
+	#submitButton{
     margin-top:15px;
     margin-bottom:15px;
   }
@@ -37,185 +35,138 @@
 		</div>
 	</main>
 
-  						<!-- Survey Questions -->
-  						<div class="input-field col s12">
-  							<h3>Question 1</h3>
-  							<h5>Which of these pets have you owned before?</h5>
-  							<select id="question1">
-  								<option value="" disabled selected>Choose your option</option>
-  								<option value="2"> Cat</option>
-  								<option value="3"> Dog</option>
-  								<option value="1"> Gold Fish</option>
-  								<option value="0"> None of the above</option>
-  							</select>
-  						</div>
+	<!-- Survey Questions -->
+	<form action="/usersScore" method="post">
+		<div class="input-field col s12">
+			<h3>Question 1</h3>
+			<h5>Which of these pets have you owned before?</h5>
+			<select id="question1">
+				<option value="" disabled selected>Choose your option</option>
+				<option value="2"> Cat</option>
+				<option value="3"> Dog</option>
+				<option value="1"> Gold Fish</option>
+				<option value="0"> None of the above</option>
+			</select>
+		</div>
 
-  						<div class="input-field col s12">
-  							<h3>Question 2</h3>
-  							<h5>How often do you skip a meal?</h5>
-  							<select id="question2">
-  								<option value="" disabled selected>Choose your option</option>
-  								<option value="3">Once a week</option>
-  								<option value="2">Twice a week</option>
-  								<option value="1">Three times a week</option>
-  							</select>
-  						</div>
+		<div class="input-field col s12">
+			<h3>Question 2</h3>
+			<h5>How often do you skip a meal?</h5>
+			<select id="question2">
+				<option value="" disabled selected>Choose your option</option>
+				<option value="3">Once a week</option>
+				<option value="2">Twice a week</option>
+				<option value="1">Three times a week</option>
+				<option value="0">Four or more times a week</option>
+			</select>
+		</div>
 
-  						<div class="input-field col s12">
-  							<h3>Question 3</h3>
-  							<h5>What is your noise tolerance for barking?</h5>
-  							<select id="question3">
-  								<option value="" disabled selected>Choose your option</option>
-  								<option value="0">1 (Least tolerant)</option>
-  								<option value="1">2</option>
-  								<option value="2">3</option>
-  								<option value="3">4 (most tolerant)</option>
-  							</select>
-  						</div>
+		<div class="input-field col s12">
+			<h3>Question 3</h3>
+			<h5>What is your noise tolerance for barking?</h5>
+			<select id="question3">
+				<option value="" disabled selected>Choose your option</option>
+				<option value="0">1 (Least tolerant)</option>
+				<option value="1">2</option>
+				<option value="2">3</option>
+				<option value="3">4 (most tolerant)</option>
+			</select>
+		</div>
 
-  						<div class="input-field col s12">
-  							<h3>Question 4</h3>
-  							<h5>On a scale from 1 to 4 how affectionate are you?</h5>
-  							<select id="question4">
-  								<option value="" disabled selected>Choose your option</option>
-  								<option value="0">1 (Least affectionate)</option>
-  								<option value="1">2</option>
-  								<option value="2">3</option>
-  								<option value="3">4 (Most affectionate)</option>
-  							</select>
-  						</div>
+		<div class="input-field col s12">
+			<h3>Question 4</h3>
+			<h5>On a scale from 1 to 4 how affectionate are you?</h5>
+			<select id="question4">
+				<option value="" disabled selected>Choose your option</option>
+				<option value="0">1 (Least affectionate)</option>
+				<option value="1">2</option>
+				<option value="2">3</option>
+				<option value="3">4 (Most affectionate)</option>
+			</select>
+		</div>
 
-  						<div class="input-field col s12">
-  							<h3>Question 5</h3>
-  							<h5>Pick your most ideal weekend activity:</h5>
-  							<select id="question5">
-  								<option value="" disabled selected>Choose your option</option>
-  								<option value="3">Hiking</option>
-  								<option value="2">Staying home and watching Netflix</option>
-  								<option value="1">Brunch & mimosas</option>
-  								<option value="0">Bar hopping</option>
-  							</select>
-  						</div>
+		<div class="input-field col s12">
+			<h3>Question 5</h3>
+			<h5>Pick your most ideal weekend activity:</h5>
+			<select id="question5">
+				<option value="" disabled selected>Choose your option</option>
+				<option value="3">Hiking</option>
+				<option value="2">Staying home and watching Netflix</option>
+				<option value="1">Brunch & mimosas</option>
+				<option value="0">Bar hopping</option>
+			</select>
+		</div>
 
-  						<div class="input-field col s12">
-  							<h3>Question 6</h3>
-  							<h5>Which one best describes your disposable income each month?</h5>
-  							<select id="question6">
-  								<option value="" disabled selected>Choose your option</option>
-  								<option value="0">$0-100</option>
-  								<option value="1">$100-200</option>
-  								<option value="2">$200-300</option>
-  								<option value="3">I live in San Francisco</option>
-  							</select>
-  						</div>
+		<div class="input-field col s12">
+			<h3>Question 6</h3>
+			<h5>Which one best describes your disposable income each month?</h5>
+			<select id="question6">
+				<option value="" disabled selected>Choose your option</option>
+				<option value="0">$0-100</option>
+				<option value="1">$100-200</option>
+				<option value="2">$200-300</option>
+				<option value="3">I live in San Francisco</option>
+			</select>
+		</div>
 
-  						<div class="input-field col s12">
-  							<h3>Question 7</h3>
-  							<h5>If you woke up and your pet urinated all over your bed sheets what would you do?</h5>
-  							<select id="question7">
-  								<option value="" disabled selected>Choose your option</option>
-  								<option value="2">Just clean it and not do anything else</option>
-  								<option value="0">Hit your pet</option>
-  								<option value="3">Verbally tell your pet that it’s not okay and attempt to train it</option>
-  								<option value="1">Give your pet up for adoption</option>
-  							</select>
-  						</div>
+		<div class="input-field col s12">
+			<h3>Question 7</h3>
+			<h5>If you woke up and your pet urinated all over your bed sheets what would you do?</h5>
+			<select id="question7">
+				<option value="" disabled selected>Choose your option</option>
+				<option value="2">Just clean it and not do anything else</option>
+				<option value="0">Hit your pet</option>
+				<option value="3">Verbally tell your pet that it’s not okay and attempt to train it</option>
+				<option value="1">Give your pet up for adoption</option>
+			</select>
+		</div>
 
-  						<div class="input-field col s12">
-  							<h3>Question 8</h3>
-  							<h5>How many hours a day will the pet be alone at the house?</h5>
-  							<select id="question8">
-  								<option value="" disabled selected>Choose your option</option>
-  								<option value="3">0-3 hours</option>
-  								<option value="2">3-6 hours</option>
-  								<option value="1">6-8 hours</option>
-  								<option value="0">8+ hours</option>
-  							</select>
-  						</div>
+		<div class="input-field col s12">
+			<h3>Question 8</h3>
+			<h5>How many hours a day will the pet be alone at the house?</h5>
+			<select id="question8">
+				<option value="" disabled selected>Choose your option</option>
+				<option value="3">0-3 hours</option>
+				<option value="2">3-6 hours</option>
+				<option value="1">6-8 hours</option>
+				<option value="0">8+ hours</option>
+			</select>
+		</div>
 
-  						<div class="input-field col s12">
-  							<h3>Question 9</h3>
-  							<h5>Which of these does your property have?</h5>
-  							<select id="question9">
-  								<option value="" disabled selected>Choose your option</option>
-  								<option value="1"> Front yard only</option>
-  								<option value="2">Back yard only</option>
-  								<option value="3">Front yard and backyard</option>
-  								<option value="0">None of the above</option>
-  							</select>
-  						</div>
+		<div class="input-field col s12">
+			<h3>Question 9</h3>
+			<h5>Which of these does your property have?</h5>
+			<select id="question9">
+				<option value="" disabled selected>Choose your option</option>
+				<option value="1"> Front yard only</option>
+				<option value="2">Back yard only</option>
+				<option value="3">Front yard and backyard</option>
+				<option value="0">None of the above</option>
+			</select>
+		</div>
 
-  						<div class="input-field col s12">
-  							<h3>Question 10</h3>
-  							<h5>How often do you lose your belongings?</h5>
-  							<select id="question10">
-  								<option value="" disabled selected>Choose your option</option>
-  								<option value="1">Often</option>
-  								<option value="2">Sometimes</option>
-  								<option value="3">Not very often</option>
-  								<option value="4">Almost never</option>
-  							</select>
-  						</div>
+		<div class="input-field col s12">
+			<h3>Question 10</h3>
+			<h5>How often do you lose your belongings?</h5>
+			<select id="question10">
+				<option value="" disabled selected>Choose your option</option>
+				<option value="0">Often</option>
+				<option value="1">Sometimes</option>
+				<option value="2">Not very often</option>
+				<option value="3">Almost never</option>
+			</select>
+		</div>
+	</form>
+	<!-- Survey Submit Button -->
+	<div>
+		<button type="button" class="btn btn-primary black-background white" id="submitButton">Submit</button>
+	</div>
 
-  						<!-- Survey Submit Button -->
-  						<div>
-  						<button type="button" class="btn btn-primary black-background white" id="submitButton">Submit</button>
-  						</div>
-  					</div>
-  				</div>
-  			</div>
-  		</div>
-  	</main>
+	</main>
 
-  	<script type="text/javascript">
-
-    // var userScore;
-      var scoreArr = [];
-      var totalScore = 0;
-  		// Activate submit button
-  		$('#submitButton').on('click', function(event) {
-  			event.preventDefault();
-        var q1 = $('#question1').val();
-        var q2 = $('#question2').val();
-        var q3 = $('#question3').val();
-        var q4 = $('#question4').val();
-        var q5 = $('#question5').val();
-        var q6 = $('#question6').val();
-        var q7 = $('#question7').val();
-        var q8 = $('#question8').val();
-        var q9 = $('#question9').val();
-        var q10 = $('#question10').val();
-
-        scoreArr.push(q1);
-        scoreArr.push(q2);
-        scoreArr.push(q3);
-        scoreArr.push(q4);
-        scoreArr.push(q5);
-        scoreArr.push(q6);
-        scoreArr.push(q7);
-        scoreArr.push(q8);
-        scoreArr.push(q9);
-        scoreArr.push(q10);
-
-        for (var i = 0; i< scoreArr.length; i++){
-          totalScore += i;
-        }
-
-
-  		});
-
-      </script>
-
-	<footer>
-		<% include ../partials/footer %>
-	</footer>
-
-	<script
-	src="https://code.jquery.com/jquery-3.3.1.js"
-	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-	crossorigin="anonymous">
-	</script>
-
+	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+	 crossorigin="anonymous"></script>
+	<script src="/assets/javascript/survey.js"></script>
 </body>
 
 </html>

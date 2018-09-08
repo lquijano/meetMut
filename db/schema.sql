@@ -22,3 +22,16 @@ CREATE TABLE users(
 	password VARCHAR (45) NOT NULL,
 	PRIMARY KEY (id)
 );
+
+-- //this table will store our users points and what animal they're matched with
+-- it will be a left join
+
+CREATE TABLE usersScores(
+id INT NOT NULL AUTO_INCREMENT,
+score INT (2) NOT NULL,
+PRIMARY KEY (id)
+);
+--
+-- SELECT username
+-- FROM users
+-- LEFT JOIN usersScores;
