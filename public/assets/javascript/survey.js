@@ -25,6 +25,14 @@ $("#submitButton").on("click", function(event) {
   scoreArr.push(q9);
   scoreArr.push(q10);
 
+  // for (var i = 0; i < scoreArr.length; i++) {
+  //
+  //   totalScore += parseInt(scoreArr[i]);
+  //   alert(totalScore);
+  //   console.log(totalScore);
+  //
+  // }
+
   function sum(input) {
     for (var i = 0; i < input.length; i++) {
       if (isNaN(input[i])) {
