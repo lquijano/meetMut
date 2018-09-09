@@ -1,6 +1,6 @@
 $("#loginSubmitButton").on("click", function(event) {
   event.preventDefault();
-  window.location.href = "http://localhost:8080/home";
+  window.location.href = "http://localhost:3000/home";
 
   // Here we grab the form elements
   var newUser = {
